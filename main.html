@@ -9,29 +9,8 @@
   <button id="weatherButton">Get Current Weather</button>
   <div id="weatherData"></div>
 
-  <script>
-    $(document).ready(function() {
-      $("#weatherButton").click(function() {
-        // Make an HTTP GET request to OpenWeatherMap API
-        $.ajax({
-          url: "https://api.openweathermap.org/data/2.5/weather",
-          data: {
-            q: "London",
-            appid: "YOUR_API_KEY", // Replace with your OpenWeatherMap API key
-          },
-          success: function(response) {
-            // Extract the weather description from the response
-            var weatherDescription = response.weather[0].description;
-
-            // Update the weatherData div with the weather information
-            $("#weatherData").text("Current weather in London: " + weatherDescription);
-          },
-          error: function() {
-            $("#weatherData").text("Error fetching weather data.");
-          }
-        });
-      });
-    });
+ <script type="text/javascript" src="./script.js">
+   
   </script>
 </body>
 </html>

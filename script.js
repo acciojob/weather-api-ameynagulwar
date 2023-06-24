@@ -32,3 +32,13 @@ describe("Weather API", () => {
     });
   });
 });
+// cypress/integration/weather-api.spec.js
+
+describe("Weather API", () => {
+  it("displays current weather for London", () => {
+    cy.visit("http://your-app-url.com");
+
+    // Rest of the test case code
+    // ...
+  });
+});

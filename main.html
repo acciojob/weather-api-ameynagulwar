@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Weather Application</title>
+  <title>Weather App</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    function getCurrentWeather() {
+      // API endpoint URL
+      var apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
+      // API key obtained from OpenWeatherMap
+      var apiKey = 'YOUR_API_KEY';
+      
+      // AJAX request to retrieve weather data
+      $.ajax({
+        url: apiUrl,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        data: {
+          q: 'London',
+          appid: apiKey
+        },
+        success: function(response) {
+          var weatherData = response.weather[0].description;
+          // Update the weatherData div with the weather information
+          $('#weatherData').text('Current weather in London: ' + weatherData);
+        },
+        error: function(xhr, status, error) {
+          console.log('Error:', error);
+        }
+      });
+    }
+  </script>
 </head>
 <body>
-    <button onclick="getCurrentWeather()">Get Current Weather</button>
-    <div id="weatherData"></div>
- <script type="text/javascript" src="./script.js">
-   
-  </script>
+  <h1>Weather App</h1>
+  <button onclick="getCurrentWeather()">Get Current Weather</button>
+  <div id="weatherData"></div>
 </body>
 </html>
+
 

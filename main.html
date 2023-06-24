@@ -31,6 +31,25 @@
         }
       });
     }
+	  describe('Weather App', () => {
+  it('displays the current weather for London', () => {
+    // Visit the page with the weather app
+    cy.visit('/path-to-your-app');
+
+    // Intercept the API request
+    cy.intercept('GET', 'https://api.openweathermap.org/data/2.5/weather').as('getCurrentWeather');
+
+    // Trigger the button click event
+    cy.get('button').contains('Get Current Weather').click();
+
+    // Wait for the API request to complete
+    cy.wait('@getCurrentWeather').its('response.statusCode').should('eq', 200);
+
+    // Assert the weather data is displayed
+    cy.get('#weatherData').should('contain', 'Current weather in London:');
+  });
+});
+
   </script>
 </head>
 <body>
